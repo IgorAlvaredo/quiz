@@ -3,20 +3,37 @@ export default class RespostaMotel {
     #certa: boolean
     #revelada: boolean
 
-    constructor(valor:string, certa:boolean, revelada = false){
+    constructor(valor: string, certa: boolean, revelada = false) {
         this.#valor = valor
         this.#certa = certa
         this.#revelada = revelada
 
     }
 
-    get valor(){
+    static certa(valor: string) {
+        return new RespostaMotel(valor, true)
+
+    }
+
+    static errada(valor: string) {
+        return new RespostaMotel(valor, true)
+    }
+
+    get valor() {
         return this.#valor
     }
-    get certa(){
+    get certa() {
         return this.#certa
-    }    
-    get revelada(){
+    }
+    get revelada() {
         return this.#revelada
+    }
+
+    paraObjeto() {
+        return {
+            valor: this.#valor,
+            certa: this.#certa,
+            revelada: this.#revelada
+        }
     }
 }
