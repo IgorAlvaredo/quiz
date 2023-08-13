@@ -1,4 +1,4 @@
-export default class RespostaMotel {
+export default class RespostaModel {
     #valor: string
     #certa: boolean
     #revelada: boolean
@@ -11,12 +11,12 @@ export default class RespostaMotel {
     }
 
     static certa(valor: string) {
-        return new RespostaMotel(valor, true)
+        return new RespostaModel(valor, true)
 
     }
 
     static errada(valor: string) {
-        return new RespostaMotel(valor, true)
+        return new RespostaModel(valor, true)
     }
 
     get valor() {
