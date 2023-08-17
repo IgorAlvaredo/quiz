@@ -35,9 +35,14 @@ export default class QuestaoModel {
         return false
     }
 
-    // responderCom(indice: number): QuestaoModel {
-    //     return
-    // }
+    responderCom(indice: number): QuestaoModel {
+        const acertou = this.#respostas[indice].certa
+        const respostas = this.#respostas.map((resposta, i) => {
+            const respostaSelecionada = indice === i
+            return respostaSelecionada? resposta.revelar() : resposta
+        })
+        return new QuestaoModel(this.id, this.enunciado, respostas, acertou)
+    }
 
     embaralharRespostas(): QuestaoModel{
         let respostasEmbaralhadas = embaralhar(this.#respostas)
@@ -48,8 +53,9 @@ export default class QuestaoModel {
         return {
             id: this.#id,
             enunciado:this.#enunciado,
-            respostas: this.#respostas.map(resp => resp.paraObjeto()), 
-            acertou: this.#acertou
+            respondida: this.respondida,
+            acertou: this.#acertou,
+            respostas: this.#respostas.map(resp => resp.paraObjeto())
         }
     }
 }
