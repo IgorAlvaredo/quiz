@@ -1,3 +1,4 @@
+import { embaralhar } from "@/functions/arrays"
 import RespostaMotel from "./resposta"
 
 export default class QuestaoModel {
@@ -32,6 +33,15 @@ export default class QuestaoModel {
             if(resposta.revelada)return true
         }
         return false
+    }
+
+    // responderCom(indice: number): QuestaoModel {
+    //     return
+    // }
+
+    embaralharRespostas(): QuestaoModel{
+        let respostasEmbaralhadas = embaralhar(this.#respostas)
+        return new QuestaoModel(this.#id, this.#enunciado, respostasEmbaralhadas, this.#acertou)
     }
 
     paraObjeto() {
