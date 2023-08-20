@@ -1,20 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import Questao from '@/components/Questao'
 import QuestaoModel from '@/model/questao'
 import RespostaModel from '@/model/resposta'
 import { useState } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
-
-
-const questaoMock = new QuestaoModel(1, 'Melhor cor?', [
+const questaoMock = new QuestaoModel(1, 'Qual é a melhor cor?', [
   RespostaModel.errada('Verde'),
   RespostaModel.errada('Vermelha'),
   RespostaModel.errada('Azul'),
-  RespostaModel.certa('preta')
+  RespostaModel.certa('Preta')
 ])
 
 export default function Home() {
