@@ -34,8 +34,6 @@ export default function Home() {
     idsDasQuestoes.length > 0 && carregarQuestao(idsDasQuestoes[0])
   }, [idsDasQuestoes])
 
-
-
   function questaoRespondida(questaoRespondida: QuestaoModel) {
     setQuestao(questaoRespondida)
     const acertou = questaoRespondida.acertou
@@ -53,7 +51,7 @@ export default function Home() {
   }
 
   function irPraProximaQuestao(proximoId: number) {
-    carregarQuestao(idsDasQuestoes[proximoId])
+    carregarQuestao(proximoId)
   }
 
   function finalizar() {
