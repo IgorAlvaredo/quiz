@@ -1,14 +1,14 @@
-import { embaralhar } from "@/functions/arrays"
-import RespostaMotel from "./resposta"
+import { embaralhar } from "@/functions/arrays";
+import RespostaModel from "./resposta";
 
 export default class QuestaoModel {
     #id: number
     #enunciado: string
-    #respostas: RespostaMotel[]
+    #respostas: RespostaModel[]
     #acertou: boolean
     //#respondida: boolean
 
-    constructor(id: number, enunciado: string, respostas: RespostaMotel[], acertou = false) {
+    constructor(id: number, enunciado: string, respostas: RespostaModel[], acertou = false) {
         this.#id = id
         this.#enunciado = enunciado
         this.#respostas = respostas
@@ -52,6 +52,11 @@ export default class QuestaoModel {
     embaralharRespostas(): QuestaoModel {
         let respostasEmbaralhadas = embaralhar(this.#respostas)
         return new QuestaoModel(this.#id, this.#enunciado, respostasEmbaralhadas, this.#acertou)
+    }
+
+    static criarUsandoObjeto(obj: QuestaoModel): QuestaoModel {
+        const respostas = obj.respostas.map(resp => RespostaModel.criarUsandoObjeto(resp))
+        return new QuestaoModel(obj.id, obj.enunciado, respostas, obj.acertou)
     }
 
     paraObjeto() {
