@@ -3,7 +3,7 @@ import QuestaoModel from '@/model/questao'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-const BASE_URL = 'https://quiz-henna-beta.vercel.app/api'
+const NEXT_PUBLIC_BASE_URL = 'https://quiz-henna-beta.vercel.app/api'
 
 export default function Home() {
   const router = useRouter()
@@ -14,13 +14,13 @@ export default function Home() {
 
 
   async function carregarIdsDasQuestoes() {
-    const resp = await fetch(`${BASE_URL}/questionario`)
+    const resp = await fetch(`${NEXT_PUBLIC_BASE_URL}/questionario`)
     const idsDasQuestoes = await resp.json()
     setIdsDasQuestoes(idsDasQuestoes)
   }
 
   async function carregarQuestao(idQuestao: number) {
-    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
+    const resp = await fetch(`${NEXT_PUBLIC_BASE_URL}/questoes/${idQuestao}`)
     const json = await resp.json()
     const novaQuestao = QuestaoModel.criarUsandoObjeto(json)
     setQuestao(novaQuestao)
